@@ -1,0 +1,68 @@
+---
+const links = [
+  { label: 'Email', href: 'mailto:amaliahwang@gmail.com' },
+  { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=EV-yPOQAAAAJ&hl=en' },
+  { label: 'ORCID', href: 'https://orcid.org/0009-0005-9828-5431' },
+  { label: 'Download CV', href: '/Amalia_CV.pdf' },
+];
+---
+
+<section class="profile-card">
+  <img class="avatar" src="/amalia.jpg" alt="Portrait of Amalia" width="140" height="140" />
+  <h1>Amalia</h1>
+  <p class="title">
+    Postdoctoral Researcher, AI Security Convergence Lab<br />
+    Hankyong National University, Republic of Korea
+  </p>
+  <ul class="links">
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noopener">
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .profile-card {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-border);
+  }
+
+  .profile-card h1 {
+    margin: 1rem 0 0.25rem;
+    font-size: 1.9rem;
+  }
+
+  .title {
+    color: var(--color-text-muted);
+    margin: 0 0 1rem;
+  }
+
+  .links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.25rem;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .links li::after {
+    content: '';
+  }
+</style>

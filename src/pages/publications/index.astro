@@ -1,0 +1,131 @@
+---
+import Base from '../../layouts/Base.astro';
+import { journals, conferences } from '../../data/publications.js';
+
+const JOURNAL_PREVIEW = 4;
+const CONFERENCE_PREVIEW = 5;
+---
+
+<Base title="Publications">
+  <h1>Publications</h1>
+
+  <section class="section">
+    <h2>International Journals</h2>
+    <ol class="pub-list">
+      {
+        journals.map((pub, i) => (
+          <li class:list={['pub-item', { hidden: i >= JOURNAL_PREVIEW }]}>
+            <span class="pub-year">{pub.year}</span>
+            <p class="pub-title">{pub.title}</p>
+            <p class="pub-authors" set:html={pub.authors.replace('A. Amalia', '<strong>A. Amalia</strong>')} />
+            <p class="pub-venue">{pub.venue}</p>
+          </li>
+        ))
+      }
+    </ol>
+    {journals.length > JOURNAL_PREVIEW && <button class="toggle" data-target="journals">Show more</button>}
+  </section>
+
+  <section class="section">
+    <h2>International Conferences</h2>
+    <ol class="pub-list">
+      {
+        conferences.map((pub, i) => (
+          <li class:list={['pub-item', { hidden: i >= CONFERENCE_PREVIEW }]}>
+            <span class="pub-year">{pub.year}</span>
+            <p class="pub-title">{pub.title}</p>
+            <p class="pub-authors" set:html={pub.authors.replace('A. Amalia', '<strong>A. Amalia</strong>')} />
+            <p class="pub-venue">{pub.venue}</p>
+          </li>
+        ))
+      }
+    </ol>
+    {
+      conferences.length > CONFERENCE_PREVIEW && (
+        <button class="toggle" data-target="conferences">
+          Show more
+        </button>
+      )
+    }
+  </section>
+</Base>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  sections.forEach((section) => {
+    const button = section.querySelector<HTMLButtonElement>('.toggle');
+    if (!button) return;
+    const items = section.querySelectorAll<HTMLLIElement>('.pub-item.hidden');
+    const initiallyHidden = Array.from(items);
+
+    button.addEventListener('click', () => {
+      const isExpanded = button.dataset.expanded === 'true';
+      initiallyHidden.forEach((item) => {
+        item.classList.toggle('hidden', isExpanded);
+      });
+      button.dataset.expanded = String(!isExpanded);
+      button.textContent = isExpanded ? 'Show more' : 'Show less';
+    });
+  });
+</script>
+
+<style>
+  .pub-list {
+    list-style: decimal;
+    padding-left: 1.4rem;
+    margin: 0;
+  }
+
+  .pub-item {
+    margin-bottom: 1.4rem;
+  }
+
+  .pub-item.hidden {
+    display: none;
+  }
+
+  .pub-year {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-bg-alt);
+    border-radius: 4px;
+    padding: 0.1rem 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .pub-title {
+    margin: 0.3rem 0 0.2rem;
+    font-weight: 600;
+  }
+
+  .pub-authors {
+    margin: 0.1rem 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .pub-venue {
+    margin: 0.1rem 0 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+
+  .toggle {
+    display: block;
+    margin: 0.5rem auto 0;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.45rem 1.1rem;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .toggle:hover {
+    background: var(--color-bg-alt);
+  }
+</style>
