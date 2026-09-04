@@ -1,17 +1,10 @@
 export const journals = [
   {
-    year: 2025,
-    title:
-      'A Cross-Layer FL-Based Clustering Protocol to Support Multicast Routing in IoT-Enabled MANETs With CF-mMIMO',
-    authors: 'A. Amalia, Y. Pramitarini, R. Hendra Yoga Perdana, K. Shim, and B. An',
-    venue: 'IEEE Access, vol. 13, pp. 3881–3899, 2025',
-  },
-  {
-    year: 2025,
+    year: 2026,
     title:
       'Beamforming-Based Multicast Routing Protocol in Underlay Cognitive MANETs with STAR-RIS: Deep Learning Design',
     authors: 'A. Amalia, Y. Pramitarini, R. H. Y. Perdana, K. Shim, and B. An',
-    venue: 'IEEE Internet of Things Journal, 2025 (Submitted)',
+    venue: 'IEEE Internet of Things Journal, vol. 13, no. 17, pp. 39897–39919, 2026',
   },
   {
     year: 2025,
@@ -19,6 +12,13 @@ export const journals = [
       'Energy Efficient Multicast Routing Protocol Using FL-Based Optimal Route Selection in IoT-Enabled MANETs With RIS and CF-mMIMO',
     authors: 'A. Amalia, Y. Pramitarini, R. H. Y. Perdana, K. Shim, and B. An',
     venue: 'IEEE Internet of Things Journal, vol. 12, no. 22, pp. 47588–47606, 2025',
+  },
+  {
+    year: 2025,
+    title:
+      'A Cross-Layer FL-Based Clustering Protocol to Support Multicast Routing in IoT-Enabled MANETs With CF-mMIMO',
+    authors: 'A. Amalia, Y. Pramitarini, R. Hendra Yoga Perdana, K. Shim, and B. An',
+    venue: 'IEEE Access, vol. 13, pp. 3881–3899, 2025',
   },
   {
     year: 2023,
